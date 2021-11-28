@@ -9,23 +9,23 @@
 * 透過餐廳名稱或類別搜尋特定餐廳
 ## 開始使用
 1. 請先確認有安裝 node.js 與 npm
-1. 將專案 clone 到本地
-1. 在本地開啟之後，透過終端機進入資料夾，輸入：
-```
-npm install
-```
-1. 安裝完畢後，繼續輸入：
-```
-npm run start
-```
-1. 若看見此行訊息則代表順利運行，打開瀏覽器進入到以下網址
-```
-Express is listening on http://localhost:3000
-```
-1. 若欲暫停使用
-```
-ctrl + c
-```
+2. 將專案 clone 到本地
+3. 在本地開啟之後，透過終端機進入資料夾，輸入：
+  ```
+  npm install
+  ```
+4. 安裝完畢後，繼續輸入：
+  ```
+  npm run start
+  ```
+5. 若看見此行訊息則代表順利運行，打開瀏覽器進入到以下網址
+  ```
+  Express is listening on http://localhost:3000
+  ```
+6. 若欲暫停使用
+  ```
+  ctrl + c
+  ```
 ## 開發工具
 * Node.js 16.13.0
 * Express 4.17.1
