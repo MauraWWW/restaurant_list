@@ -6,7 +6,7 @@ const restaurantList = require('./restaurant.json')
 const port = 3000
 
 // setting template engine
-app.engine('handlebars', exphbs({defaultLayout: 'main'}))
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
@@ -17,23 +17,20 @@ app.get('/', (req, res) => {
 
 app.get('/restaurants/:restaurant_id', (req, res) => {
   const restaurant = restaurantList.results.find(restaurant => restaurant.id.toString() === req.params.restaurant_id)
-  res.render('show', { restaurant : restaurant })
+  res.render('show', { restaurant: restaurant })
 })
 
 app.get('/search', (req, res) => {
-  console.log(req.query)
-
-  if(!req.query.keywords) {
+  if (!req.query.keywords) {
     res.redirect('/')
+  } else {
+    const keywords = req.query.keywords
+    const keyword = req.query.keywords.trim().replace(/ /g, '').toLowerCase()
+    const restaurants = restaurantList.results.filter(restaurant => {
+      return restaurant.name.trim().replace(/ /g, '').toLowerCase().includes(keyword) || restaurant.category.includes(keyword)
+    })
+    res.render('index', { restaurants: restaurants, keywords: keywords })
   }
-
-  const keywords = req.query.keywords
-  const keyword = req.query.keywords.trim().replace(/ /g, '').toLowerCase()
-  const restaurants = restaurantList.results.filter(restaurant => {
-    return restaurant.name.trim().replace(/ /g, '').toLowerCase().includes(keyword) || restaurant.category.includes(keyword)
-  })
-  res.render('index', { restaurants: restaurants, keywords: keywords })
-
 })
 
 // start and listen
